@@ -1,0 +1,17 @@
+import  express from 'express';
+var router = express.Router()
+import {
+    interviewerControllerFind,
+    interviewerControllerCreate,
+    interviewerControllerFindOne,
+    interviewerControllerUpdate,
+    interviewerControllerDelete
+} from ("../controller/interviewer");
+
+router.get("/getData", interviewerControllerFind)
+router.post("/addData", interviewerControllerCreate)
+router.get("/getData/:id",  interviewerControllerFindOne)
+router.post("/updateData/:id", interviewerControllerUpdate)
+router.delete("/deleteData/:id", interviewerControllerDelete)
+
+export default router;
