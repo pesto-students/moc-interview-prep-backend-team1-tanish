@@ -1,4 +1,4 @@
-import InterviewerDb from "../model/interviewer";
+import InterviewerDb from "../model/interviewer.js";
 
 const interviewerControllerFind = (req, res) => {
     InterviewerDb.find()

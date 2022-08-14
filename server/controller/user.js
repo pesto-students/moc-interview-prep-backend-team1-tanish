@@ -1,4 +1,4 @@
-import UserDb from "../model/user";
+import UserDb from "../model/user.js";
 
 const userControllerFind = (req, res) => { 
         UserDb.find()

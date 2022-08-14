@@ -7,7 +7,7 @@ import  {
     userControllerUpdate,
     userControllerDelete,
     userControllerFindOneUser
-} from "../controller/user";
+} from "../controller/user.js";
 
 router.get("/getData", userControllerFind)
 router.post("/addData", userControllerCreate)

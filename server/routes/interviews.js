@@ -6,7 +6,7 @@ import {
     interviewControllerFindOne,
     interviewControllerUpdate,
     interviewControllerDelete
-} from ("../controller/interviewes");
+} from '../controller/interviews.js';
 
 router.get("/getData", interviewControllerFind)
 router.post("/addData", interviewControllerCreate)
