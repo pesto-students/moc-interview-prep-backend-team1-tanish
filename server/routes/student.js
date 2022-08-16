@@ -12,7 +12,7 @@ import
 router.get("/getData",studentControllerFind);
 router.post("/addData",studentControllerCreate);
 router.get("/getData/:id", studentControllerFindOne)
-router.post("/updateData/:id", studentControllerUpdate,)
+router.post("/updateData/:id", studentControllerUpdate)
 router.delete("/deleteData/:id",  studentControllerDelete)
 
 

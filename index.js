@@ -2,18 +2,20 @@ import express from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import connectDb from  './server/database/dbConnect.js';
+import cors from 'cors';
 
 import StudentRoute from './server/routes/student.js';
 import InterviewerRoute from './server/routes/interviewer.js';
 import InterviewsRoute   from './server/routes/interviews.js';
 import UserRoute from  './server/routes/user.js';
+import QueryRoute from './server/routes/query.js';
 
 
 
 dotenv.config();
 const app = express();
 
-
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -21,6 +23,7 @@ app.use('/student',StudentRoute);
 app.use('/interviewer',InterviewerRoute);
 app.use('/interviews',InterviewsRoute);
 app.use('/user',UserRoute);
+app.use('/query',QueryRoute );
 
 
 const port = process.env.PORT || '8080';
