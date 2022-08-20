@@ -10,7 +10,7 @@ import {
 
 router.get("/getData", interviewerControllerFind)
 router.post("/addData", interviewerControllerCreate)
-router.get("/getData/:id",  interviewerControllerFindOne)
+router.get("/getData/email",  interviewerControllerFindOne)
 router.post("/updateData/:id", interviewerControllerUpdate)
 router.delete("/deleteData/:id", interviewerControllerDelete)
 

@@ -18,6 +18,7 @@ const studentControllerCreate = (req,res) => {
     const student = new StudentDb({
         email:req.body.email,
         name:req.body.name,
+        password:req.body.password,
         contact: req.body.contact,
         degree: req.body.degree,
         experience: req.body.experience,
@@ -34,22 +35,25 @@ const studentControllerCreate = (req,res) => {
     });
     student.save(student)
     .then((data) =>{
+        console.log("then");
+        console.log(data);
         data!=null?res.send(data):res.send({message:"Data not found for id" + id});
     });
+    // .catch((err) =>{
+    //     console.log("catch");
+    //     console.log(err);
+    //     res.send({message:err.message|| "Error in saving  the data"});
+    // });
+    
 };
 
-const studentControllerFindOne = (req,res) =>{
+const studentControllerFindOne = async (req,res) => {
     if(!req.body){
         res.send({message:"Input Cannot be empty"});
     }
-    let id = req.params.id;
-    StudentDb.findById(id)
-    .then((data)=>{
-        data!=null?res.send(data):res.send({message:"Data not found for id"+id});
-    })
-    .catch((err) =>{
-        res.send({message:err.message || "Error while fetching data"});
-    });
+    let foundUser = await StudentDb.findOne({email:req.query.email}).exec();
+    res.send(foundUser);
+    
 };
 
 const studentControllerUpdate =(req,res) =>{
