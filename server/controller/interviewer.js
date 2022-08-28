@@ -50,6 +50,25 @@ const interviewerControllerFind = (req, res) => {
     let foundUser = await InterviewerDb.findOne({email:req.query.email}).exec();
     res.send(foundUser);
   };
+
+  const interviewerControllerFindById = (req, res) => {
+    if (!req.body) {
+      res.status(500).send({ message: "Input cannot be empty" });
+    }
+    console.log(req);
+    let id = req.params.id;
+    InterviewerDb.findById(id)
+      .then((data) => {
+        data != null
+          ? res.send(data)
+          : res.send({ message: "Data not found for id " + id });
+      })
+      .catch((err) => {
+        res.send({ message: err.message || "Error while fetching data" });
+      });
+  };
+
+
   
   const interviewerControllerUpdate = (req, res) => {
     if (!req.body) {
@@ -91,6 +110,7 @@ const interviewerControllerDelete = (req, res) => {
     interviewerControllerFind,
     interviewerControllerCreate,
     interviewerControllerFindOne,
+    interviewerControllerFindById,
     interviewerControllerUpdate,
     interviewerControllerDelete
   };

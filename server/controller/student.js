@@ -56,6 +56,23 @@ const studentControllerFindOne = async (req,res) => {
     
 };
 
+const studentControllerFindById = (req, res) => {
+    if (!req.body) {
+      res.status(500).send({ message: "Input cannot be empty" });
+    }
+    console.log(req);
+    let id = req.params.id;
+    StudentDb.findById(id)
+      .then((data) => {
+        data != null
+          ? res.send(data)
+          : res.send({ message: "Data not found for id " + id });
+      })
+      .catch((err) => {
+        res.send({ message: err.message || "Error while fetching data" });
+      });
+  };
+
 const studentControllerUpdate =(req,res) =>{
     if (!req.body) {
         res.send({ message: "data cannot be empty" });
@@ -92,6 +109,7 @@ export
     studentControllerFind,
     studentControllerCreate,
     studentControllerFindOne,
+    studentControllerFindById,
     studentControllerUpdate,
     studentControllerDelete
 };
