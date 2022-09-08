@@ -9,6 +9,8 @@ import InterviewerRoute from './server/routes/interviewer.js';
 import InterviewsRoute   from './server/routes/interviews.js';
 import UserRoute from  './server/routes/user.js';
 import QueryRoute from './server/routes/query.js';
+import PricingRoute from './server/routes/pricing.js';
+import RazorpayRoute from './server/routes/razorpay.js';
 
 
 
@@ -24,6 +26,8 @@ app.use('/interviewer',InterviewerRoute);
 app.use('/interviews',InterviewsRoute);
 app.use('/user',UserRoute);
 app.use('/query',QueryRoute );
+app.use('/pricing',PricingRoute );
+app.use('/razorpay', RazorpayRoute);
 
 
 const port = process.env.PORT || '8080';
